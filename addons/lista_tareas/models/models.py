@@ -12,8 +12,8 @@ class lista_tareas(models.Model):
     urgente = fields.Boolean(compute="_value_urgente", store=True)
     realizada = fields.Boolean()
 
-    @api.depends('value')
-    def _value_pc(self):
+    @api.depends('prioridad')
+    def _value_urgentes(self):
         for record in self:
             if record.prioridad>10:
                 record.urgente = True   
